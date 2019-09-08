@@ -1,6 +1,5 @@
 /**
- * Calculator Logic
- *
+ * Calculator Logic usiing PostFix Notation and PostFxix Calculator Algorithm
  * Tamerlan Gudabayev
  */
 
@@ -8,14 +7,12 @@
  * Returns what button is pressed in text format, and gives
  * values to other functions on what to do
  */
+let buttonPressed = document.querySelectorAll(".numbers");
+let outputText = document.getElementById("textArea");
 function getButtonPressed() {
-  alert("shit is working");
-  let buttonPressed = document.getElementsByTagName("button");
-  let outputText = document.getElementById("textArea");
-
   for (let i = 0; i < buttonPressed.length; i++) {
     buttonPressed[i].addEventListener("click", () => {
-      outputText.value = buttonPressed[i].textContent;
+      outputText.value += buttonPressed[i].textContent;
     });
   }
 }
@@ -25,6 +22,7 @@ function getButtonPressed() {
  */
 function launch() {
   getButtonPressed();
+  clearButton();
 }
 
 function addNumbers(number1, number2) {
@@ -46,4 +44,10 @@ function divideNumbers(number1, number2) {
  */
 function operate(operator, number1, number2) {}
 
+function clearButton() {
+  clearButton = document.getElementById("cancelButton");
+  clearButton.addEventListener("click", () => {
+    outputText.value = "";
+  });
+}
 launch();
