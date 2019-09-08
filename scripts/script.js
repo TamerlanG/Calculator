@@ -7,12 +7,29 @@
  * Returns what button is pressed in text format, and gives
  * values to other functions on what to do
  */
+let isOperatorPressed = false;
+
 let buttonPressed = document.querySelectorAll(".numbers");
 let outputText = document.getElementById("textArea");
 function getButtonPressed() {
   for (let i = 0; i < buttonPressed.length; i++) {
     buttonPressed[i].addEventListener("click", () => {
-      outputText.value += buttonPressed[i].textContent;
+      let currentButton = buttonPressed[i].textContent;
+      if (isNaN(currentButton)) {
+        // Returns true if it isn't a number
+        if (isOperatorPressed) {
+          // Operator is already pressed then don't do anything
+        } else {
+          // Add isn't pressed so press it then toggle it;
+          outputText.value += buttonPressed[i].textContent;
+          isOperatorPressed = true;
+        }
+      } else {
+        outputText.value += buttonPressed[i].textContent;
+
+        //Reset all the operators
+        isOperatorPressed = false;
+      }
     });
   }
 }
@@ -22,6 +39,7 @@ function getButtonPressed() {
  */
 function launch() {
   getButtonPressed();
+  operate();
   clearButton();
 }
 
@@ -39,15 +57,31 @@ function divideNumbers(number1, number2) {
 }
 
 /**
- * Operator function takes an operator, and two numbers then
- * calls the appropriate function
+ * First part of calculating numbers is to chane the numbers into
+ * Post Fix Notation
+ * ex. 3 + 5 ==> 3 5 +
  */
-function operate(operator, number1, number2) {}
+function createPostFixNotation(expression) {
+  console.log(expression);
+}
+
+/**
+ * Second part of the equation is to use the post fix notation to calculate
+ * the output value
+ */
+function postFixCalculator(postFixExpression) {}
 
 function clearButton() {
   clearButton = document.getElementById("cancelButton");
   clearButton.addEventListener("click", () => {
     outputText.value = "";
+  });
+}
+function operate() {
+  equalButton = document.getElementById("equalButton");
+
+  equalButton.addEventListener("click", () => {
+    createPostFixNotation(expression);
   });
 }
 launch();
