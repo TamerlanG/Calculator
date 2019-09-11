@@ -7,8 +7,8 @@
  * Returns what button is pressed in text format, and gives
  * values to other functions on what to do
  */
-let isOperatorPressed = false;
 
+let isOperatorPressed = false;
 let buttonPressed = document.querySelectorAll(".numbers");
 let outputText = document.getElementById("textArea");
 function getButtonPressed() {
@@ -43,26 +43,13 @@ function launch() {
   clearButton();
 }
 
-function addNumbers(number1, number2) {
-  return number1 + number2;
-}
-function subtractNumbers(number1, number2) {
-  return number1 - number2;
-}
-function multiplyNumbers(number1, number2) {
-  return number1 * number2;
-}
-function divideNumbers(number1, number2) {
-  return number1 / number2;
-}
-
 /**
  * First part of calculating numbers is to chane the numbers into
  * Post Fix Notation
  * ex. 3 + 5 ==> 3 5 +
  */
 function createPostFixNotation(expression) {
-  console.log(expression);
+  alert(expression);
 }
 
 /**
@@ -79,9 +66,11 @@ function clearButton() {
 }
 function operate() {
   equalButton = document.getElementById("equalButton");
+  let mathExperssion = outputText.value;
 
   equalButton.addEventListener("click", () => {
-    createPostFixNotation(expression);
+    createPostFixNotation(mathExperssion);
+    alert(mathExperssion);
   });
 }
 launch();
