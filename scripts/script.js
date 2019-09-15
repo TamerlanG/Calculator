@@ -56,21 +56,21 @@ function createPostFixNotation(expression) {
  * Second part of the equation is to use the post fix notation to calculate
  * the output value
  */
-function postFixCalculator(postFixExpression) {}
+function postFixCalculator(postFixExpression) { }
 
 function clearButton() {
-  clearButton = document.getElementById("cancelButton");
+  let clearButton = document.getElementById("cancelButton");
   clearButton.addEventListener("click", () => {
     outputText.value = "";
   });
 }
 function operate() {
-  equalButton = document.getElementById("equalButton");
-  let mathExperssion = outputText.value;
+  let equalButton = document.getElementById("equalButton");
+  let mathExperssion = document.querySelector("#textArea");
 
   equalButton.addEventListener("click", () => {
-    createPostFixNotation(mathExperssion);
-    alert(mathExperssion);
+    createPostFixNotation(mathExperssion.value);
+    console.log(mathExperssion.value);
   });
 }
 launch();
