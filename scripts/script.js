@@ -49,7 +49,24 @@ function launch() {
  * ex. 3 + 5 ==> 3 5 +
  */
 function createPostFixNotation(expression) {
-  alert(expression);
+  let infixNotation = expression.split('');
+  let numberStack = [];
+  let operatorStack = [];
+
+  for (let i = 0; i < infixNotation.length; i++) {
+    if (isNaN(infixNotation[i])) {
+      // if it is not a numbrt
+      operatorStack.push(infixNotation[i]);
+    }
+    else {
+      numberStack.push(infixNotation[i]);
+    }
+  }
+
+  let postFixNotation = numberStack.concat(operatorStack).join("");
+  console.log(postFixNotation);
+
+
 }
 
 /**
@@ -70,7 +87,6 @@ function operate() {
 
   equalButton.addEventListener("click", () => {
     createPostFixNotation(mathExperssion.value);
-    console.log(mathExperssion.value);
   });
 }
 launch();
